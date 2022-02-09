@@ -27,7 +27,7 @@ saveRDS(m2_fm,paste0(path_pbc_folder,"/working/sensitivity/m2_fm_lasso.RDS"))
 # m1_ffm <- fitting_models(paste0("iaea_deut_ffm ~",x_1),
 #                          train_male,validation_male,test_male,model = "glmmLasso")
 
-m2_ffm <- fitting_models(paste0("iaea_deut_ffm ~",x_2),
+m2_ffm <- fitting_models(paste0("iaea_deut_ffm ~",x_2),cc
                          train_male,validation_male,test_male,model = "glmmLasso")
 
 # m3_ffm <- fitting_models(paste0("iaea_deut_ffm ~",x_3),

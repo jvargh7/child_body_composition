@@ -59,3 +59,4 @@ test_male %>%
 test_male %>% 
   group_by(iaea_country) %>% 
   tally()
+

@@ -1,9 +1,11 @@
 
 # Male -------------
 fm_male <- read_csv(paste0(path_pbc_folder,"/working/Prediction dataset - males.csv")) %>% 
+  distinct(iaea_country,record_id,iaea_visit,.keep_all=TRUE) %>% 
   ungroup() %>% 
   dplyr::filter(iaea_ia_age <= 26) %>% 
   dplyr::select(iaea_country,record_id,iaea_ia_age,iaea_visit,iaea_ia_lgt,iaea_ia_wgt,
+                # iaea_ia_hc,iaea_ia_ac,
                 iaea_ia_ts,iaea_ia_ss,reg_asia,iaea_deut_fm,iaea_deut_ffm) %>% 
   dplyr::filter(complete.cases(.)) %>% 
   mutate(iaea_ia_lgt = iaea_ia_lgt/100) %>% 
@@ -30,7 +32,9 @@ validation_ids_male <- unique_ids_male %>%
             by=c("iaea_country","record_id"))
 
 test_male <- read_csv(paste0(path_pbc_folder,"/working/External validation sample.csv")) %>% 
+  distinct(iaea_country,record_id,iaea_visit,.keep_all=TRUE) %>% 
   dplyr::select(iaea_country,iaea_sex,record_id,iaea_ia_age,iaea_visit,iaea_ia_lgt,iaea_ia_wgt,
+                # iaea_ia_hc,iaea_ia_ac,
                 iaea_ia_ts,iaea_ia_ss,iaea_deut_fm,iaea_deut_ffm) %>% 
   dplyr::filter(iaea_sex == "male",iaea_ia_age <= 26) %>% 
   dplyr::filter(complete.cases(.)) %>% 
@@ -59,8 +63,10 @@ validation_male <- validation_ids_male %>%
 # Female -------------
 fm_female <- read_csv(paste0(path_pbc_folder,"/working/Prediction dataset - females.csv")) %>% 
   ungroup() %>% 
+  distinct(iaea_country,record_id,iaea_visit,.keep_all=TRUE) %>% 
   dplyr::filter(iaea_ia_age <= 26) %>% 
   dplyr::select(iaea_country,record_id,iaea_ia_age,iaea_visit,iaea_ia_lgt,iaea_ia_wgt,
+                # iaea_ia_hc,iaea_ia_ac,
                 iaea_ia_ts,iaea_ia_ss,reg_asia,iaea_deut_fm,iaea_deut_ffm) %>% 
   dplyr::filter(complete.cases(.)) %>% 
   mutate(iaea_ia_lgt = iaea_ia_lgt/100) %>% 
@@ -87,7 +93,9 @@ validation_ids_female <- unique_ids_female %>%
             by=c("iaea_country","record_id"))
 
 test_female <- read_csv(paste0(path_pbc_folder,"/working/External validation sample.csv")) %>% 
+  distinct(iaea_country,record_id,iaea_visit,.keep_all=TRUE) %>% 
   dplyr::select(iaea_country,iaea_sex,record_id,iaea_ia_age,iaea_visit,iaea_ia_lgt,iaea_ia_wgt,
+                # iaea_ia_hc,iaea_ia_ac,
                 iaea_ia_ts,iaea_ia_ss,iaea_deut_fm,iaea_deut_ffm) %>% 
   dplyr::filter(iaea_sex == "female",iaea_ia_age <= 26) %>% 
   dplyr::filter(complete.cases(.)) %>% 
